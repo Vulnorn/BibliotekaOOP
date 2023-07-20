@@ -14,7 +14,7 @@ namespace BibliotekaOOP
             Shelf shelf = new Shelf();
             shelf.AddBook();
             shelf.ShowAllBooks();
-           Console.ReadKey();
+            Console.ReadKey();
         }
     }
 
@@ -49,7 +49,7 @@ namespace BibliotekaOOP
             string name = InputUserString("Введите название книги");
             string author = InputUserString("Введите автора книги");
 
-            if (GetInputUserYear(out int yearPublication)==true)
+            if (GetInputUserYear(out int yearPublication) == true)
                 _books.Add(new Book(name, author, yearPublication));
             else
                 Console.WriteLine("Книга не добывлена!");
@@ -60,7 +60,7 @@ namespace BibliotekaOOP
         {
             Console.WriteLine("Введите номер книги для удаления");
 
-            if (GetBookAccordingId(out Book book)==true)
+            if (GetBookAccordingId(out Book book) == true)
             {
                 _books.Remove(book);
                 Console.WriteLine("Книга с таким номером удалена");
@@ -85,12 +85,19 @@ namespace BibliotekaOOP
 
         public void ShowBooksAccordingYearPublication()
         {
+            Console.WriteLine("Введите год издания");
 
+            Stack<Book> books = GetAllBooksAccordingYearPublication();
+
+            if(books.Count==0)
+                Console.WriteLine("Нет книг с таким годом издания.");
+
+               books.Pop().ShowInfo();
         }
 
         private string InputUserString(string massage)
         {
-            string userInput=null;
+            string userInput;
 
             do
             {
@@ -118,7 +125,7 @@ namespace BibliotekaOOP
             Console.WriteLine("Введите Год издания книги");
             string userInput = Console.ReadLine();
 
-            if ( GetInputValue(userInput,out yearPublication)==false)
+            if (GetInputValue(userInput, out yearPublication) == false)
                 return false;
 
             if (GetNumberRange(yearPublication))
@@ -159,7 +166,7 @@ namespace BibliotekaOOP
 
             string userInput = Console.ReadLine();
 
-            if (GetInputValue(userInput,  out int id) == false)
+            if (GetInputValue(userInput, out int id) == false)
                 return false;
 
             id--;
@@ -176,28 +183,24 @@ namespace BibliotekaOOP
             return false;
         }
 
-        private bool GetAllBooksAccordingYearPublication()
+        private Stack<Book> GetAllBooksAccordingYearPublication()
         {
-            List<Book> books = new List<Book>(); 
+            Stack<Book> books = new Stack<Book>();
 
             string userInput = Console.ReadLine();
 
             if (GetInputValue(userInput, out int year) == false)
-                return false;      
-
-            for (int i = 0; i < _books.Count; i++)
             {
-                if (year  == _books[i].YearRelease)
+                for (int i = 0; i < _books.Count; i++)
                 {
-                    books.Add(_books[i]);
+                    if (year == _books[i].YearRelease)
+                    {
+                        books.Push(_books[i]);
+                    }
                 }
             }
 
-            if (books.Count > 0)
-                return true;
-
-            return false;
+            return books;
         }
-
     }
 }
