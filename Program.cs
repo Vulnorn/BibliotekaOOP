@@ -101,8 +101,6 @@ namespace BibliotekaOOP
             FillBooks();
         }
 
-        public string NumberBooks { get; private set; }
-
         public void AddBook()
         {
             Console.Clear();
