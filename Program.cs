@@ -10,13 +10,13 @@ namespace BibliotekaOOP
         {
             Shelf shelf = new Shelf();
 
-            const string AddNewBookMenu = "1";
-            const string ShowBooksMenu = "2";
-            const string DeleteBookMenu = "3";
-            const string ShowBooksAccordingAuthorMenu = "4";
-            const string ShowBooksAccordingNameMenu = "5";
-            const string ShowBooksAccordingYearPublicationMenu = "6";
-            const string ExitMenu = "7";
+            const string CommandAddNewBook = "1";
+            const string CommandShowBooks = "2";
+            const string CommandDeleteBook = "3";
+            const string CommandShowBooksAccordingAuthor = "4";
+            const string CommandShowBooksAccordingName = "5";
+            const string CommandShowBooksAccordingYearPublication = "6";
+            const string CommandExit = "7";
 
             bool isWork = true;
 
@@ -24,43 +24,43 @@ namespace BibliotekaOOP
             {
                 Console.Clear();
                 Console.WriteLine($"Выберите пункт в меню:");
-                Console.WriteLine($"{AddNewBookMenu} - Добавить новую книгу.");
-                Console.WriteLine($"{ShowBooksMenu} - Показать все книги.");
-                Console.WriteLine($"{DeleteBookMenu} - Удалить книгу");
-                Console.WriteLine($"{ShowBooksAccordingAuthorMenu} - Показать все книги одного автора");
-                Console.WriteLine($"{ShowBooksAccordingNameMenu} - Показать все книги с одинаковым названием");
-                Console.WriteLine($"{ShowBooksAccordingYearPublicationMenu} - Показать все книги с одинаковым годом издания");
-                Console.WriteLine($"{ExitMenu} - Выход");
+                Console.WriteLine($"{CommandAddNewBook} - Добавить новую книгу.");
+                Console.WriteLine($"{CommandShowBooks} - Показать все книги.");
+                Console.WriteLine($"{CommandDeleteBook} - Удалить книгу");
+                Console.WriteLine($"{CommandShowBooksAccordingAuthor} - Показать все книги одного автора");
+                Console.WriteLine($"{CommandShowBooksAccordingName} - Показать все книги с одинаковым названием");
+                Console.WriteLine($"{CommandShowBooksAccordingYearPublication} - Показать все книги с одинаковым годом издания");
+                Console.WriteLine($"{CommandExit} - Выход");
 
                 string userInput = Console.ReadLine();
 
                 switch (userInput)
                 {
-                    case AddNewBookMenu:
+                    case CommandAddNewBook:
                         shelf.AddBook();
                         break;
 
-                    case ShowBooksMenu:
+                    case CommandShowBooks:
                         shelf.ShowAllBooks();
                         break;
 
-                    case DeleteBookMenu:
+                    case CommandDeleteBook:
                         shelf.DeleteBook();
                         break;
 
-                    case ShowBooksAccordingAuthorMenu:
+                    case CommandShowBooksAccordingAuthor:
                         shelf.FindBooksAccordingAuthor();
                         break;
 
-                    case ShowBooksAccordingNameMenu:
+                    case CommandShowBooksAccordingName:
                         shelf.FindBooksAccordingName();
                         break;
 
-                    case ShowBooksAccordingYearPublicationMenu:
+                    case CommandShowBooksAccordingYearPublication:
                         shelf.FindBooksAccordingYearPublication();
                         break;
 
-                    case ExitMenu:
+                    case CommandExit:
                         isWork = false;
                         break;
 
